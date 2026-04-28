@@ -1,0 +1,108 @@
+# =============================================================================
+# UpgradeMate Documentation - Hugo Configuration
+# =============================================================================
+# Branding tip: most visual branding lives in `params:` below and in
+# `assets/css/custom.css` (CSS variables). Update those two places to rebrand.
+# =============================================================================
+
+baseURL: "https://docs.upgrademate.example/"
+title: "Docs"
+languageCode: "en-us"
+defaultContentLanguage: "en"
+
+# Hextra theme via Hugo Modules
+module:
+  imports:
+    - path: github.com/imfing/hextra
+
+enableRobotsTXT: true
+enableGitInfo: false
+enableEmoji: true
+hasCJKLanguage: false
+
+markup:
+  goldmark:
+    renderer:
+      unsafe: true   # Allow raw HTML in markdown (needed by Hextra shortcodes)
+    parser:
+      attribute:
+        block: true
+  highlight:
+    noClasses: false
+
+# Top navigation bar — search only.
+# The site logo (top-left) links to https://www.upgrademate.io.
+menu:
+  main:
+    - name: Search
+      weight: 1
+      params:
+        type: search
+
+# -----------------------------------------------------------------------------
+# Branding & site-wide variables
+# Edit values here to re-skin the site without touching templates.
+# Reference in markdown via:  {{< param "productName" >}}
+# -----------------------------------------------------------------------------
+params:
+  # ---- Brand identity ----
+  productName: "UpgradeMate"
+  productTagline: "Effortless upgrades for modern apps."
+  companyName: "UpgradeMate, Inc."
+  description: "Official documentation for UpgradeMate — effortless upgrades for modern apps."
+
+  # ---- Favicon (file lives under `static/`) ----
+  # favicon: /favicon.ico
+
+  # ---- Theme appearance (UpgradeMate brand is dark-first) ----
+  theme:
+    default: dark          # light | dark | system
+    displayToggle: true
+
+  navbar:
+    displayTitle: true     # shows the site `title` ("Docs") next to the logo
+    displayLogo: true
+    width: wide
+    # ---- Logo (Hextra v0.12+ expects logo nested under `navbar`) ----
+    logo:
+      # Light-mode logo (dark wordmark on light background).
+      # Resized to 280x64 from the 2200x500 original; original kept at
+      # images/UpgradeMateLogoBig.png for reference.
+      path: images/UpgradeMateLogo-navbar.png
+      # Dark-mode logo (white wordmark on dark background).
+      # Resized to 280x64 from images/LogoBig_Dark.png.
+      dark: images/UpgradeMateLogo-navbar-dark.png
+      # Display size in CSS pixels. Hextra renders <img width=.. height=..>,
+      # so set BOTH to keep the navbar from clipping the image.
+      width: 140
+      height: 32
+      # Clicking the logo takes visitors to the marketing site, not the docs root.
+      link: "https://www.upgrademate.io"
+
+  footer:
+    enable: true
+    displayCopyright: true
+    displayPoweredBy: false   # hide "Powered by Hextra" credit
+    width: normal
+
+  page:
+    width: normal          # full | wide | normal
+
+  toc:
+    displayTags: true
+    displayPosition: right
+
+  editURL:
+    enable: false
+    base: "https://github.com/upgrademate/docs/edit/main/content"
+
+  search:
+    enable: true
+    type: flexsearch
+    flexsearch:
+      index: content
+      tokenize: forward
+
+  # ---- Custom CSS for brand colors / fonts ----
+  customCSS:
+    - css/custom.css

@@ -1,0 +1,202 @@
+/* =============================================================================
+   UpgradeMate Brand Stylesheet for Hextra
+   -----------------------------------------------------------------------------
+   Maps the official UpgradeMate brand guidelines onto Hextra's design tokens.
+   All brand values are defined as CSS custom properties so they can be tweaked
+   in one place if the brand evolves.
+   ============================================================================= */
+
+/* -----------------------------------------------------------------------------
+   1. Brand tokens (single source of truth)
+   ----------------------------------------------------------------------------- */
+:root {
+  /* ---- Core dark blues (backgrounds) ---- */
+  --um-bg:            #0F2033;   /* Main background          */
+  --um-bg-elevated:   #162D46;   /* Cards, panels, sidebar   */
+  --um-bg-hover:      #1B3556;   /* Subtle hover surface     */
+  --um-border:        #233A5C;   /* 1px borders / dividers   */
+
+  /* ---- Accent palette ---- */
+  --um-action:        #0078D4;   /* Primary CTA / links      */
+  --um-action-hover:  #2A8FE0;
+  --um-success:       #92C353;
+  --um-warning:       #EB6B23;
+
+  /* ---- Text ---- */
+  --um-text:          #FFFFFF;   /* Headings                 */
+  --um-text-body:     #A0B1C5;   /* Body copy                */
+  --um-text-muted:    #7B8CA3;   /* Captions, metadata       */
+
+  /* ---- Typography ---- */
+  --um-font-sans:     "Segoe UI", "Inter", system-ui, -apple-system,
+                      "Helvetica Neue", Arial, sans-serif;
+  --um-font-mono:     "Cascadia Code", "Fira Code", "JetBrains Mono",
+                      Consolas, "Courier New", monospace;
+
+  /* ---- Geometry (per brand: 4px or 8px rounded corners) ---- */
+  --um-radius-sm: 4px;
+  --um-radius-md: 8px;
+
+  /* ---- Hextra primary color (HSL components for #0078D4) ----
+     Hextra/Tailwind reads these to recolor links, buttons, focus rings, etc. */
+  --hextra-primary-hue:        207deg;
+  --hextra-primary-saturation: 100%;
+  --hextra-primary-lightness:  42%;
+}
+
+/* Slightly brighter primary in dark mode for AA contrast */
+.dark {
+  --hextra-primary-hue:        207deg;
+  --hextra-primary-saturation: 100%;
+  --hextra-primary-lightness:  52%;
+}
+
+/* -----------------------------------------------------------------------------
+   2. Global typography
+   ----------------------------------------------------------------------------- */
+html, body {
+  font-family: var(--um-font-sans);
+  color: var(--um-text-body);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--um-font-sans);
+  color: var(--um-text);
+  letter-spacing: -0.01em;
+}
+
+/* Brand spec: H1 Bold, H2 Semibold */
+h1 { font-weight: 700; }
+h2 { font-weight: 600; }
+
+code, pre, kbd, samp {
+  font-family: var(--um-font-mono);
+}
+
+/* -----------------------------------------------------------------------------
+   3. Dark theme — apply UpgradeMate brand backgrounds
+   Hextra/Tailwind paints surfaces with neutral greys by default. We override
+   the most visible surfaces with our brand blues. Selectors target Hextra's
+   `hx:` Tailwind utility classes used in the compiled HTML.
+   ----------------------------------------------------------------------------- */
+.dark body,
+.dark .hx\:bg-dark,
+.dark .hx\:bg-neutral-900,
+.dark .hx\:bg-neutral-950 {
+  background-color: var(--um-bg) !important;
+  color: var(--um-text-body);
+}
+
+/* Navbar, sidebar, TOC sidebar -> elevated panel color */
+.dark .hextra-nav-container-blur,
+.dark nav.hextra-sidebar-container,
+.dark aside.hextra-toc,
+.dark .hx\:bg-neutral-800 {
+  background-color: var(--um-bg-elevated) !important;
+  border-color: var(--um-border) !important;
+}
+
+/* Borders / dividers in dark mode */
+.dark .hx\:border-neutral-700,
+.dark .hx\:border-neutral-800,
+.dark .hx\:border-gray-200,
+.dark .hx\:border-b,
+.dark .hx\:border-t {
+  border-color: var(--um-border) !important;
+}
+
+/* Headings stay crisp white in dark mode */
+.dark h1, .dark h2, .dark h3, .dark h4, .dark h5, .dark h6,
+.dark .hx\:text-slate-100,
+.dark .hx\:text-white {
+  color: var(--um-text) !important;
+}
+
+/* Body text in dark mode -> brand light grey-blue */
+.dark .hx\:text-gray-300,
+.dark .hx\:text-gray-400,
+.dark .hx\:text-neutral-300,
+.dark .hx\:text-neutral-400 {
+  color: var(--um-text-body) !important;
+}
+
+/* Sidebar link hover */
+.dark .hextra-sidebar-container a:hover {
+  background-color: var(--um-bg-hover) !important;
+}
+
+/* -----------------------------------------------------------------------------
+   4. Primary buttons & CTAs
+   ----------------------------------------------------------------------------- */
+.hextra-hero-button,
+.hx\:bg-primary-600,
+button.hx\:bg-primary-600 {
+  background-color: var(--um-action) !important;
+  border-radius: var(--um-radius-md) !important;
+  font-weight: 600;
+  transition: background-color 0.15s ease;
+}
+.hextra-hero-button:hover,
+.hx\:bg-primary-600:hover {
+  background-color: var(--um-action-hover) !important;
+}
+
+/* -----------------------------------------------------------------------------
+   5. Cards, code blocks, callouts — rounded per brand spec
+   ----------------------------------------------------------------------------- */
+.hextra-card,
+.hextra-feature-card,
+pre, code,
+.hextra-callout,
+table {
+  border-radius: var(--um-radius-md);
+}
+
+/* Inline code chips */
+:not(pre) > code {
+  border-radius: var(--um-radius-sm);
+  padding: 0.1em 0.35em;
+  font-size: 0.9em;
+}
+.dark :not(pre) > code {
+  background-color: var(--um-bg-hover) !important;
+  color: var(--um-text) !important;
+}
+
+/* Code block background uses elevated panel color in dark mode */
+.dark pre,
+.dark pre[class*="language-"] {
+  background-color: var(--um-bg-elevated) !important;
+}
+
+/* -----------------------------------------------------------------------------
+   6. Brand-specific helper classes (use in markdown via raw HTML)
+   ----------------------------------------------------------------------------- */
+.brand-callout {
+  border-left: 4px solid var(--um-action);
+  background: rgba(0, 120, 212, 0.08);
+  padding: 0.75rem 1rem;
+  border-radius: var(--um-radius-md);
+  margin: 1rem 0;
+  color: var(--um-text-body);
+}
+.dark .brand-callout {
+  background: rgba(0, 120, 212, 0.15);
+}
+
+.brand-success { color: var(--um-success); }
+.brand-warning { color: var(--um-warning); }
+.brand-action  { color: var(--um-action); }
+
+/* -----------------------------------------------------------------------------
+   8. TOC bottom area — hide the empty container Hextra always renders.
+   It contains tag list / edit link / scroll-to-top button. When all three
+   are absent or hidden it still shows a dark border + shadow rectangle.
+   We collapse it; the scroll-to-top button still works (it's position:fixed
+   in effect via opacity transitions, but here we drop it since editURL and
+   tags are off site-wide). Re-enable by removing this rule.
+   ----------------------------------------------------------------------------- */
+.hextra-toc nav > div > div:last-child,
+.hextra-toc div.hx\:sticky.hx\:bottom-0 {
+  display: none !important;
+}

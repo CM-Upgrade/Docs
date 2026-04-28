@@ -1,0 +1,3 @@
+# i18n overrides for English.
+# Hextra reads these via Hugo's `T` function. Add more keys here as needed.
+copyright: "© 2026 UpgradeMate, Inc. All rights reserved."
