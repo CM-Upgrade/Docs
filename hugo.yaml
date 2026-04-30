@@ -5,7 +5,7 @@
 # `assets/css/custom.css` (CSS variables). Update those two places to rebrand.
 # =============================================================================
 
-baseURL: "https://docs.upgrademate.example/"
+baseURL: "https://docs.upgrademate.io/"
 title: "Docs"
 languageCode: "en-us"
 defaultContentLanguage: "en"
