@@ -228,6 +228,14 @@ table {
   margin-right: auto;
 }
 
+/* Hextra paints the outer <footer> with `dark:bg-neutral-900` (~#171717),
+   which is a different shade than our brand background. Match the page bg
+   so the footer reads as a continuous extension of the page (the marketing
+   site does the same). */
+.hextra-footer {
+  background-color: var(--um-bg) !important;
+}
+
 .um-footer {
   display: flex;
   align-items: center;
