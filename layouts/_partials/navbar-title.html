@@ -1,0 +1,35 @@
+{{- /*
+  Override of Hextra's `navbar-title.html` partial.
+
+  Hextra wraps the logo image AND the site title text in a single <a> tag,
+  pointing both to `params.navbar.logo.link`. We need them to lead to two
+  different URLs:
+
+    - Logo  → `params.navbar.logo.link`        (marketing site, www.upgrademate.io)
+    - Title → `.Site.Home.RelPermalink`        (docs root, docs.upgrademate.io)
+
+  Splits the single anchor into two anchors with a thin vertical separator
+  in between (styled by `.navbar-title-separator` in custom.css).
+*/ -}}
+{{- $logoPath     := .Site.Params.navbar.logo.path     | default "images/logo.svg" -}}
+{{- $logoLink     := .Site.Params.navbar.logo.link     | default .Site.Home.RelPermalink -}}
+{{- $logoWidth    := .Site.Params.navbar.logo.width    | default "20" -}}
+{{- $logoHeight   := .Site.Params.navbar.logo.height   | default "20" -}}
+{{- $logoDarkPath := .Site.Params.navbar.logo.dark     | default $logoPath -}}
+{{- $displayTitle := (.Site.Params.navbar.displayTitle | default true) -}}
+{{- $displayLogo  := (.Site.Params.navbar.displayLogo  | default true) -}}
+
+<div class="hx:flex hx:items-center hx:ltr:mr-auto hx:rtl:ml-auto">
+  {{- if $displayLogo }}
+    <a class="hx:flex hx:items-center hx:hover:opacity-75" href="{{ $logoLink }}">
+      <img class="hx:block hx:dark:hidden" src="{{ $logoPath | relURL }}" alt="{{ cond $displayTitle `Logo` .Site.Title }}" height="{{ $logoHeight }}" width="{{ $logoWidth }}" />
+      <img class="hx:hidden hx:dark:block" src="{{ $logoDarkPath | relURL }}" alt="{{ cond $displayTitle `Dark Logo` .Site.Title }}" height="{{ $logoHeight }}" width="{{ $logoWidth }}" />
+    </a>
+  {{- end }}
+  {{- if $displayTitle }}
+    <span class="navbar-title-separator" aria-hidden="true"></span>
+    <a class="hx:hover:opacity-75" href="{{ .Site.Home.RelPermalink }}">
+      <span class="hx:font-extrabold hx:inline hx:select-none">{{- .Site.Title -}}</span>
+    </a>
+  {{- end }}
+</div>

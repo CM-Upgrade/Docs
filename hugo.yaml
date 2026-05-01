@@ -47,7 +47,7 @@ menu:
 params:
   # ---- Brand identity ----
   productName: "UpgradeMate"
-  productTagline: "Effortless upgrades for modern apps."
+  productTagline: "Make Windows upgrades actually work."
   companyName: "UpgradeMate, Inc."
   description: "Official documentation for UpgradeMate — effortless upgrades for modern apps."
 
@@ -57,7 +57,7 @@ params:
   # ---- Theme appearance (UpgradeMate brand is dark-first) ----
   theme:
     default: dark          # light | dark | system
-    displayToggle: true
+    displayToggle: false   # site is dark-only; no user toggle
 
   navbar:
     displayTitle: true     # shows the site `title` ("Docs") next to the logo
@@ -81,7 +81,7 @@ params:
 
   footer:
     enable: true
-    displayCopyright: true
+    displayCopyright: false   # rendered by layouts/_partials/custom/footer.html
     displayPoweredBy: false   # hide "Powered by Hextra" credit
     width: normal
 

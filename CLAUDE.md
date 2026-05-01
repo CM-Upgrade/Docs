@@ -22,10 +22,22 @@ upgrademate-docs/
 │   └── css/custom.css         # Brand stylesheet (CSS variables → tokens)
 ├── static/
 │   └── images/                # Logos served verbatim at /images/...
-├── content/                   # Markdown pages (flat — no /docs/ subfolder)
-│   ├── _index.md              # Landing page (cascade: type=docs)
-│   ├── getting-started.md
-│   └── configuration.md
+├── content/                   # Markdown pages (sectioned — no /docs/ subfolder)
+│   ├── _index.md              # Landing page / Introduction (cascade: type=docs)
+│   ├── getting-started.md     # Single-page Getting Started
+│   ├── setup/                 # Install & configure UpgradeMate
+│   │   ├── _index.md
+│   │   ├── initial-configuration.md
+│   │   ├── inventory-class-setup.md
+│   │   └── powerbi-dashboard-setup.md
+│   ├── deployment/            # Roll out upgrades and end-user experience
+│   │   ├── _index.md
+│   │   ├── configuration-overview-pilot-deployment.md
+│   │   └── end-user-interface.md
+│   └── operations/            # Day-2: monitoring, license, removal
+│       ├── _index.md
+│       ├── monitoring-insights.md
+│       └── license-management-and-removal.md
 ├── i18n/
 │   └── en.yaml                # Overrides Hextra strings (e.g. footer copyright)
 └── docs/
@@ -70,8 +82,10 @@ repeat them.
 
 ## Conventions
 
-- **URLs are flat.** Documentation lives at `/getting-started`, `/configuration`,
-  not `/docs/...`. The site root *is* the docs landing page.
+- **URLs use logical sections, not a `/docs/` prefix.** The site root *is* the
+  docs landing page. Top-level pages live at `/getting-started`; grouped guides
+  live under workflow sections — `/setup/...`, `/deployment/...`,
+  `/operations/...`. Don't introduce a `/docs/` segment.
 - **Cascade pattern:** `content/_index.md` declares `cascade: { type: docs }`,
   giving every descendant page Hextra's docs layout (sidebar + TOC + prev/next)
   without per-file front matter.

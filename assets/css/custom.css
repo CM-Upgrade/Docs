@@ -189,6 +189,129 @@ table {
 .brand-action  { color: var(--um-action); }
 
 /* -----------------------------------------------------------------------------
+   7. Page width — match the marketing site (max-width 1160px / 72.5rem).
+   Overrides the three width CSS variables Hextra derives from
+   `params.{page,navbar,footer}.width`. Since this is the source of truth,
+   those YAML params are ineffective once this rule is in place.
+   ----------------------------------------------------------------------------- */
+:root {
+  --hextra-max-page-width:   72.5rem;
+  --hextra-max-navbar-width: 72.5rem;
+  --hextra-max-footer-width: 72.5rem;
+}
+
+/* -----------------------------------------------------------------------------
+   7b. Navbar title separator — thin vertical line between the logo and the
+   site title (rendered by the project override at
+   layouts/_partials/navbar-title.html).
+   ----------------------------------------------------------------------------- */
+.navbar-title-separator {
+  display: inline-block;
+  width: 1px;
+  height: 24px;
+  background-color: rgba(255, 255, 255, 0.5);
+  margin: 0 14px;
+  vertical-align: middle;
+}
+
+/* -----------------------------------------------------------------------------
+   7c. Custom footer — mirrors the marketing site at upgrademate.io.
+   Rendered by `layouts/_partials/custom/footer.html` inside Hextra's outer
+   `.hextra-custom-footer` wrapper (which already provides the max-width
+   constraint and horizontal safe-area padding).
+   ----------------------------------------------------------------------------- */
+/* Center Hextra's custom-footer wrapper — the partial template doesn't add
+   `mx-auto`, only the (now-disabled) copyright block did. Without this the
+   footer hugs the left edge while the rest of the page is centered. */
+.hextra-custom-footer {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.um-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
+  padding: 32px 0;
+  border-top: 1px solid var(--um-border);
+  width: 100%;
+}
+
+.um-footer-brand {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.um-footer-logo img {
+  height: 28px;
+  width: auto;
+  display: block;
+}
+
+.um-footer-copy {
+  font-size: 13px;
+  color: var(--um-text-muted);
+  margin: 0;
+}
+
+.um-footer-meta {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  flex-wrap: wrap;
+}
+
+.um-footer-legal {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.um-footer-legal a {
+  font-size: 13px;
+  color: var(--um-text-muted);
+  transition: color 0.2s;
+}
+
+.um-footer-legal a:hover {
+  color: var(--um-text);
+}
+
+.um-footer-links {
+  display: flex;
+  gap: 20px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.um-footer-links a {
+  display: flex;
+  align-items: center;
+  opacity: 0.5;
+  transition: opacity 0.2s;
+}
+
+.um-footer-links a:hover {
+  opacity: 1;
+}
+
+.um-footer-links img {
+  height: 20px;
+  width: auto;
+}
+
+@media (max-width: 800px) {
+  .um-footer { flex-direction: column; text-align: center; gap: 20px; }
+  .um-footer-brand { flex-direction: column; gap: 8px; }
+  .um-footer-meta { flex-direction: column; gap: 16px; }
+  .um-footer-legal { justify-content: center; }
+}
+
+/* -----------------------------------------------------------------------------
    8. TOC bottom area — hide the empty container Hextra always renders.
    It contains tag list / edit link / scroll-to-top button. When all three
    are absent or hidden it still shows a dark border + shadow rectangle.
@@ -199,4 +322,25 @@ table {
 .hextra-toc nav > div > div:last-child,
 .hextra-toc div.hx\:sticky.hx\:bottom-0 {
   display: none !important;
+}
+
+/* -----------------------------------------------------------------------------
+   9. Embedded YouTube videos — Hextra's youtube shortcode wraps the iframe in
+   a div with inline styles but no `margin-top`, so the embed sits flush
+   against the heading above it. Restore the breathing room prose elements
+   (paragraphs, lists) get below an H3.
+   ----------------------------------------------------------------------------- */
+div:has(> iframe[title="YouTube video"]) {
+  margin-top: 1.5rem;
+}
+
+/* -----------------------------------------------------------------------------
+   10. Card layout — for icon/text cards (no image), Hextra pushes content to
+   the bottom via `mt-auto` on the inner wrapper. When two cards in a grid
+   have different title line counts (e.g. one wraps to 2 lines, one fits on
+   1), they look misaligned because content is bottom-anchored. Top-align
+   the content so the cards read consistently.
+   ----------------------------------------------------------------------------- */
+.hextra-card:not(:has(img)) > .hx\:mt-auto {
+  margin-top: 0;
 }

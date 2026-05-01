@@ -1,0 +1,27 @@
+{{- /*
+  Custom footer — mirrors the layout used on the marketing site
+  (https://www.upgrademate.io). Hextra's footer.html invokes this partial as a
+  documented customization point, so we don't have to override the entire
+  partial. Default Hextra copyright/powered-by section is disabled in
+  hugo.yaml (`params.footer.displayCopyright: false`).
+*/ -}}
+<div class="um-footer">
+  <div class="um-footer-brand">
+    <a class="um-footer-logo" href="https://www.upgrademate.io">
+      <img src="{{ "images/LogoBig_Dark.png" | relURL }}" alt="UpgradeMate" />
+    </a>
+    <p class="um-footer-copy">© {{ now.Year }} UpgradeMate. All rights reserved.</p>
+  </div>
+  <div class="um-footer-meta">
+    <div class="um-footer-legal">
+      <a href="https://www.upgrademate.io/privacy/">Privacy Policy</a>
+      <a href="https://www.upgrademate.io/delivery-returns/">Delivery &amp; Returns</a>
+      <a href="https://www.upgrademate.io/terms/">Terms of Use</a>
+    </div>
+    <ul class="um-footer-links">
+      <li><a href="https://x.com/upgrademate" target="_blank" rel="noopener" aria-label="X (Twitter)"><img src="{{ "images/Ico_X.png" | relURL }}" alt="X" /></a></li>
+      <li><a href="https://www.youtube.com/@UpgradeMate" target="_blank" rel="noopener" aria-label="YouTube"><img src="{{ "images/Ico_Youtube.png" | relURL }}" alt="YouTube" /></a></li>
+      <li><a href="https://www.linkedin.com/company/upgrademate" target="_blank" rel="noopener" aria-label="LinkedIn"><img src="{{ "images/Ico_Linkedin.png" | relURL }}" alt="LinkedIn" /></a></li>
+    </ul>
+  </div>
+</div>
