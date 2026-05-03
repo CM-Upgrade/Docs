@@ -30,7 +30,10 @@ The email contains your license details and direct download links for both the s
 
 2. Click **Download UpgradeMate Setup** to download `UpgradeMateSetup.zip`, then click **Download License File (data.bin)** to download your license.
 
-   > **Note:** The download links remain valid for **30 days**. Your license is valid for **one year** from activation for purchased plans, or **10 days** for demo licenses. Keep this email — you will need it again if you re-deploy or renew.
+   <div class="brand-callout">
+     <span class="brand-callout-icon">💡</span>
+     <div class="brand-callout-text">The download links remain valid for <strong>30 days</strong>. Your license is valid for <strong>one year</strong> from activation for purchased plans, or <strong>10 days</strong> for demo licenses. Keep this email — you will need it again if you re-deploy or renew.</div>
+   </div>
 
 #### Run the Installer
 
@@ -46,11 +49,11 @@ The email contains your license details and direct download links for both the s
 
 ### Need help?
 
-Reply to your activation email or reach the UpgradeMate team at `info@upgrademate.io`.
+Reply to your activation email or reach the UpgradeMate team via the [contact page](https://www.upgrademate.io/contact).
 
 ---
 
 ### Related Links
+* [Prepare Your Environment]({{< ref "setup/inventory-class-setup.md" >}})
 * [Initial Configuration]({{< ref "setup/initial-configuration.md" >}})
-* [Inventory Class Setup]({{< ref "setup/inventory-class-setup.md" >}})
 * [Power BI Dashboard Setup]({{< ref "setup/powerbi-dashboard-setup.md" >}})

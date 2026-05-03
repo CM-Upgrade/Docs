@@ -11,9 +11,8 @@ Welcome to the **{{< param "productName" >}}** documentation!
 Make Windows upgrades actually work.
 
 <div class="brand-callout">
-  💡 <strong>Tip:</strong> {{< param "productName" >}} is a ConfigMgr (SCCM) add-on —
-  it works with your existing infrastructure. No new servers, no agents, no
-  parallel platform to maintain.
+  <span class="brand-callout-icon">💡</span>
+  <div class="brand-callout-text">{{< param "productName" >}} is a ConfigMgr (SCCM) add-on — it works with your existing infrastructure. No new servers, no agents, no parallel platform to maintain.</div>
 </div>
 
 ## What is UpgradeMate?

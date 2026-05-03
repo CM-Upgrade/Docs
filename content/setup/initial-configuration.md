@@ -2,7 +2,7 @@
 title: "Initial Configuration"
 date: 2026-04-30
 draft: false
-weight: 1
+weight: 2
 description: "Walkthrough of the UpgradeMate first-time setup wizard — environment configuration, upgrade form design, OS package selection, distribution points, summary review and pilot deployment."
 ---
 
@@ -42,7 +42,7 @@ The wizard collects the information required for the installation and checks the
    * Specify the folder where the source files will be stored. The wizard automatically creates the directory structure it needs and will not interfere with your existing folders.
    * Click **Check Prerequisites** to validate the values you entered. If any check fails, the details appear in the **Description** column for that item so you can correct it.
 
-   > **Note:** On a first install, the **CM_UpgradeMate Inventory Class** check may be reported as missing. See the [Inventory Class Setup]({{< ref "inventory-class-setup.md" >}}) guide for the steps to import this class into Configuration Manager.
+   > **Note:** If the **CM_UpgradeMate Inventory Class** check is reported as missing, complete [Prepare Your Environment]({{< ref "inventory-class-setup.md" >}}) first — UpgradeMate cannot continue without it.
 
 #### Design the Upgrade Form
 
@@ -117,5 +117,5 @@ Initial Configuration complete. UpgradeMate is configured in your Configuration 
 ---
 
 ### Related Links
-* [Inventory Class Setup]({{< ref "inventory-class-setup.md" >}})
+* [Prepare Your Environment]({{< ref "inventory-class-setup.md" >}})
 * [Power BI Dashboard Setup]({{< ref "powerbi-dashboard-setup.md" >}})

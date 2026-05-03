@@ -1,5 +1,5 @@
 ---
-title: "Operations"
+title: "Monitoring & Managing"
 weight: 4
 prev: /deployment/end-user-interface
 next: /operations/monitoring-insights

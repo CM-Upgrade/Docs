@@ -1,12 +1,21 @@
 ---
-title: "Inventory Class Setup"
+title: "Prepare Your Environment"
 date: 2026-04-30
 draft: false
-weight: 2
-description: "How to extend the SCCM hardware inventory schema with the CM_UpgradeMate class and import it into Client Settings for reporting."
+weight: 1
+description: "Prepare your Configuration Manager environment for UpgradeMate by extending the hardware inventory schema with the CM_UpgradeMate class — a required, one-time step per site."
 ---
 
-This guide explains how to integrate the **CM_UpgradeMate** hardware inventory class into your Microsoft Endpoint Configuration Manager (MECM/SCCM) environment. The process has two parts: extending the client hardware inventory schema, and importing the class into Client Settings so the data becomes available for reporting and queries.
+Before you install UpgradeMate, prepare your Configuration Manager environment so it can collect the data UpgradeMate relies on. You will extend the hardware inventory schema with the **CM_UpgradeMate** class — a **required** step for both UpgradeMate's installation and its ongoing operation.
+
+<div class="brand-callout">
+  <span class="brand-callout-icon">💡</span>
+  <div class="brand-callout-text">Run this once per Configuration Manager site. You do not need to repeat it for additional UpgradeMate installations on the same site.</div>
+</div>
+
+The process has two parts: extending the client hardware inventory schema, and importing the class into Client Settings so the data becomes available for reporting and queries.
+
+> **Note:** The procedure uses Microsoft's standard mechanism for extending hardware inventory. For background, see [Extend hardware inventory in Configuration Manager](https://learn.microsoft.com/en-us/intune/configmgr/core/clients/manage/inventory/extend-hardware-inventory) on Microsoft Learn.
 
 ### Video Tutorial
 

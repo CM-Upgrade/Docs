@@ -1,5 +1,5 @@
 ---
-title: "Deployment"
+title: "Rolling Out Upgrades"
 weight: 3
 prev: /setup/powerbi-dashboard-setup
 next: /deployment/configuration-overview-pilot-deployment

@@ -96,5 +96,5 @@ Setup complete. Your UpgradeMate Power BI report is now live and will automatica
 ---
 
 ### Related Links
+* [Prepare Your Environment]({{< ref "inventory-class-setup.md" >}})
 * [Initial Configuration]({{< ref "initial-configuration.md" >}})
-* [Inventory Class Setup]({{< ref "inventory-class-setup.md" >}})

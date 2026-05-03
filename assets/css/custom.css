@@ -173,12 +173,27 @@ table {
    6. Brand-specific helper classes (use in markdown via raw HTML)
    ----------------------------------------------------------------------------- */
 .brand-callout {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
   border-left: 4px solid var(--um-action);
   background: rgba(0, 120, 212, 0.08);
   padding: 0.75rem 1rem;
   border-radius: var(--um-radius-md);
-  margin: 1rem 0;
+  margin: 1rem auto;
+  max-width: calc(100% - 2rem); /* a touch narrower than body paragraphs */
   color: var(--um-text-body);
+}
+
+.brand-callout-icon {
+  flex-shrink: 0;
+  font-size: 1.2em;
+  line-height: 1.5;
+}
+
+.brand-callout-text {
+  flex: 1;
+  min-width: 0;
 }
 .dark .brand-callout {
   background: rgba(0, 120, 212, 0.15);
@@ -351,4 +366,104 @@ div:has(> iframe[title="YouTube video"]) {
    ----------------------------------------------------------------------------- */
 .hextra-card:not(:has(img)) > .hx\:mt-auto {
   margin-top: 0;
+}
+
+/* -----------------------------------------------------------------------------
+   11. FAQ list — restyles Hextra's `details` shortcode (used inside a
+   `.faq-list` wrapper on the FAQ page) to match the brand:
+     - panel background uses --um-bg-elevated (same as the checkout cards
+       on www.upgrademate.io) instead of the gray neutral-800
+     - chevron icon (›) replaced with a white "+" that rotates 45° to "×"
+       when expanded
+     - icon and question text top-aligned (so multi-line questions don't
+       leave the icon stranded mid-text)
+     - question text rendered at normal weight (Hextra wraps the title in
+       <strong> by default, which reads too heavy here)
+   ----------------------------------------------------------------------------- */
+.faq-list details {
+  background-color: var(--um-bg-elevated) !important;
+}
+
+.faq-list details > summary {
+  align-items: flex-start;
+}
+
+.faq-list details > summary::before {
+  background-image: none !important;
+  content: "+" !important;
+  width: auto !important;
+  height: auto !important;
+  padding: 0 0.6rem 0 0 !important;
+  vertical-align: baseline !important;
+  font-family: ui-sans-serif, system-ui, sans-serif;
+  font-size: 1.1em;
+  line-height: inherit;
+  font-weight: 400;
+  color: var(--um-text);
+  filter: none !important;
+  transform: none !important;
+  rotate: 0deg !important; /* Tailwind v4 uses standalone CSS `rotate`, not `transform` */
+}
+
+.faq-list details[open] > summary::before {
+  content: "\2212" !important; /* U+2212 minus sign */
+  rotate: 0deg !important;
+}
+
+.faq-list details > summary > strong {
+  font-weight: normal;
+  font-size: 1rem; /* match body text */
+}
+
+/* Hover — Hextra defaults to a neutral gray; use our page background color
+   instead so the hover state stays on-brand. */
+.faq-list details > summary:hover {
+  background-color: var(--um-bg) !important;
+}
+
+/* Answer container — indent under the question text (so it doesn't sit at
+   the panel's left edge), smaller font than the question, and a dashed
+   separator above to divide question from answer. */
+.faq-list details > div {
+  margin-top: 0.5rem;
+  padding-top: 0.75rem !important;
+  padding-left: 2.5rem !important;
+  padding-right: 0.75rem !important;
+  font-size: 0.875rem;
+  border-top: 1px solid var(--um-border);
+}
+
+/* -----------------------------------------------------------------------------
+   12. Doc page prev/next pager — Hextra renders these at 1rem on mobile and
+   1.125rem on >=768px; both are larger than the body text and visually
+   compete with the article. Drop them to 0.875rem site-wide.
+   ----------------------------------------------------------------------------- */
+a.hx\:max-w-\[50\%\].hx\:font-medium {
+  font-size: 0.875rem !important;
+}
+
+/* -----------------------------------------------------------------------------
+   13. Markdown blockquotes — used site-wide as inline notes / tips / warnings
+   (`> **Note:** ...`, `> **Warning:** ...`, etc.). Drop the font slightly so
+   they read as supplementary annotations next to the main body copy.
+   ----------------------------------------------------------------------------- */
+.content blockquote,
+article blockquote {
+  font-size: 0.9rem;
+}
+
+/* -----------------------------------------------------------------------------
+   14. Numbered/bulleted steps with screenshots — markdown renders standalone
+   images as their own <p>; without extra spacing, the next list item starts
+   right under the screenshot and the two steps visually merge. Add breathing
+   room below list items that contain a screenshot so adjacent steps stay
+   visually separated.
+   ----------------------------------------------------------------------------- */
+ol > li:has(img),
+ul > li:has(img) {
+  margin-bottom: 2rem !important;
+}
+
+li > p:has(> img) {
+  margin-bottom: 1rem !important;
 }

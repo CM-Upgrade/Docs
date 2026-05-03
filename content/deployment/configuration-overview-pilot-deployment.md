@@ -99,6 +99,6 @@ You are ready to run the pilot. Add a small set of representative devices to `02
 ---
 
 ### Related Links
+* [Prepare Your Environment]({{< ref "inventory-class-setup.md" >}})
 * [Initial Configuration]({{< ref "initial-configuration.md" >}})
-* [Inventory Class Setup]({{< ref "inventory-class-setup.md" >}})
 * [Power BI Dashboard Setup]({{< ref "powerbi-dashboard-setup.md" >}})

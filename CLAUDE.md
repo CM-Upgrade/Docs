@@ -25,19 +25,20 @@ upgrademate-docs/
 ├── content/                   # Markdown pages (sectioned — no /docs/ subfolder)
 │   ├── _index.md              # Landing page / Introduction (cascade: type=docs)
 │   ├── getting-started.md     # Single-page Getting Started
-│   ├── setup/                 # Install & configure UpgradeMate
+│   ├── setup/                 # "Setting Up UpgradeMate" — install & configure
 │   │   ├── _index.md
 │   │   ├── initial-configuration.md
 │   │   ├── inventory-class-setup.md
 │   │   └── powerbi-dashboard-setup.md
-│   ├── deployment/            # Roll out upgrades and end-user experience
+│   ├── deployment/            # "Rolling Out Upgrades" — workflow & end-user UX
 │   │   ├── _index.md
 │   │   ├── configuration-overview-pilot-deployment.md
 │   │   └── end-user-interface.md
-│   └── operations/            # Day-2: monitoring, license, removal
-│       ├── _index.md
-│       ├── monitoring-insights.md
-│       └── license-management-and-removal.md
+│   ├── operations/            # "Monitoring & Managing" — Day-2 operations
+│   │   ├── _index.md
+│   │   ├── monitoring-insights.md
+│   │   └── license-management-and-removal.md
+│   └── faq.md                 # FAQ — collapsible Q&A via {{% details %}}
 ├── i18n/
 │   └── en.yaml                # Overrides Hextra strings (e.g. footer copyright)
 └── docs/
